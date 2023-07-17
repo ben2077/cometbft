@@ -45,13 +45,19 @@ type EthData struct {
 }
 
 func (e *EthData) Hash() cmtbytes.HexBytes {
-	blockNumberBytes := make([]byte, 8) // assuming BlockNumber is int64
-	binary.BigEndian.PutUint64(blockNumberBytes, uint64(e.BlockNumber))
+	blockNumberBytes := make([]byte, 8) // uint64
+	binary.BigEndian.PutUint64(blockNumberBytes, e.BlockNumber)
 
 	es := make([][]byte, 1)
 	es[0] = blockNumberBytes
 
 	return merkle.HashFromByteSlices(es)
+}
+
+func (e *EthData) toProto() *cmtproto.EthData {
+	return &cmtproto.EthData{
+		BlockNumber: e.BlockNumber,
+	}
 }
 
 // Block defines the atomic unit of a CometBFT blockchain.
@@ -250,6 +256,8 @@ func (b *Block) ToProto() (*cmtproto.Block, error) {
 	}
 	pb.Evidence = *protoEvidence
 
+	pb.EthData = b.EthData.toProto()
+
 	return pb, nil
 }
 
@@ -281,6 +289,12 @@ func BlockFromProto(bp *cmtproto.Block) (*Block, error) {
 			return nil, err
 		}
 		b.LastCommit = lc
+	}
+
+	if bp.EthData != nil {
+		b.EthData = EthData{
+			BlockNumber: bp.EthData.BlockNumber,
+		}
 	}
 
 	return b, b.ValidateBasic()
@@ -364,7 +378,7 @@ type Header struct {
 	EvidenceHash    cmtbytes.HexBytes `json:"evidence_hash"`    // evidence included in the block
 	ProposerAddress Address           `json:"proposer_address"` // original proposer of the block
 
-	EthDataHash		cmtbytes.HexBytes `json:"eth_data_hash"`
+	EthDataHash cmtbytes.HexBytes `json:"eth_data_hash"`
 }
 
 // Populate the Header with state-derived data.
@@ -393,7 +407,7 @@ func (h *Header) PopulateNew(version cmtversion.Consensus, chainID string,
 	valHash, nextValHash []byte,
 	consensusHash, appHash, lastResultsHash []byte,
 	proposerAddress Address,
-	ethDataHash []byte,)  {
+	ethDataHash []byte) {
 	h.Version = version
 	h.ChainID = chainID
 	h.Time = timestamp
@@ -572,6 +586,7 @@ func (h *Header) ToProto() *cmtproto.Header {
 		LastResultsHash:    h.LastResultsHash,
 		LastCommitHash:     h.LastCommitHash,
 		ProposerAddress:    h.ProposerAddress,
+		EthDataHash:        h.EthDataHash,
 	}
 }
 
@@ -604,6 +619,7 @@ func HeaderFromProto(ph *cmtproto.Header) (Header, error) {
 	h.LastResultsHash = ph.LastResultsHash
 	h.LastCommitHash = ph.LastCommitHash
 	h.ProposerAddress = ph.ProposerAddress
+	h.EthDataHash = ph.EthDataHash
 
 	return *h, h.ValidateBasic()
 }
