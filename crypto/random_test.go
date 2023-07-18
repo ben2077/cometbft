@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto"
+	"github.com/ben2077/cometbft/crypto"
 )
 
 // the purpose of this test is primarily to ensure that the randomness

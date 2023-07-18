@@ -19,12 +19,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
-	"github.com/cometbft/cometbft/p2p/conn"
-	p2pproto "github.com/cometbft/cometbft/proto/tendermint/p2p"
+	"github.com/ben2077/cometbft/config"
+	"github.com/ben2077/cometbft/crypto/ed25519"
+	"github.com/ben2077/cometbft/libs/log"
+	cmtsync "github.com/ben2077/cometbft/libs/sync"
+	"github.com/ben2077/cometbft/p2p/conn"
+	p2pproto "github.com/ben2077/cometbft/proto/tendermint/p2p"
 )
 
 var cfg *config.P2PConfig

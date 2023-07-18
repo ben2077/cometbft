@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtversion "github.com/cometbft/cometbft/proto/tendermint/version"
-	"github.com/cometbft/cometbft/version"
+	cmtproto "github.com/ben2077/cometbft/proto/tendermint/types"
+	cmtversion "github.com/ben2077/cometbft/proto/tendermint/version"
+	"github.com/ben2077/cometbft/version"
 	"github.com/stretchr/testify/require"
 )
 
@@ -122,7 +122,7 @@ func MakeBlock(height int64, txs []Tx, lastCommit *Commit, evidence []Evidence) 
 	return block
 }
 
-func MakeNewBlock(height int64, txs []Tx, lastCommit *Commit, evidence []Evidence, eData EthData) *Block  {
+func MakeNewBlock(height int64, txs []Tx, lastCommit *Commit, evidence []Evidence, eData EthData) *Block {
 	block := &Block{
 		Header: Header{
 			Version: cmtversion.Consensus{Block: version.BlockProtocol, App: 0},

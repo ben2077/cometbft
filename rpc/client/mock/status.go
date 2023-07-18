@@ -3,8 +3,8 @@ package mock
 import (
 	"context"
 
-	"github.com/cometbft/cometbft/rpc/client"
-	ctypes "github.com/cometbft/cometbft/rpc/core/types"
+	"github.com/ben2077/cometbft/rpc/client"
+	ctypes "github.com/ben2077/cometbft/rpc/core/types"
 )
 
 // StatusMock returns the result specified by the Call

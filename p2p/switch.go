@@ -8,11 +8,11 @@ import (
 
 	"github.com/cosmos/gogoproto/proto"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/cmap"
-	"github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/libs/service"
-	"github.com/cometbft/cometbft/p2p/conn"
+	"github.com/ben2077/cometbft/config"
+	"github.com/ben2077/cometbft/libs/cmap"
+	"github.com/ben2077/cometbft/libs/rand"
+	"github.com/ben2077/cometbft/libs/service"
+	"github.com/ben2077/cometbft/p2p/conn"
 )
 
 const (

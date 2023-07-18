@@ -3,11 +3,11 @@ package consensus
 import (
 	"context"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/clist"
-	mempl "github.com/cometbft/cometbft/mempool"
-	"github.com/cometbft/cometbft/proxy"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/ben2077/cometbft/abci/types"
+	"github.com/ben2077/cometbft/libs/clist"
+	mempl "github.com/ben2077/cometbft/mempool"
+	"github.com/ben2077/cometbft/proxy"
+	"github.com/ben2077/cometbft/types"
 )
 
 //-----------------------------------------------------------------------------

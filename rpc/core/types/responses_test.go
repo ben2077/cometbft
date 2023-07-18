@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/cometbft/cometbft/p2p"
+	"github.com/ben2077/cometbft/p2p"
 )
 
 func TestStatusIndexer(t *testing.T) {

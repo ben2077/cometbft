@@ -11,8 +11,8 @@ import (
 	"net/url"
 	"strings"
 
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
-	types "github.com/cometbft/cometbft/rpc/jsonrpc/types"
+	cmtsync "github.com/ben2077/cometbft/libs/sync"
+	types "github.com/ben2077/cometbft/rpc/jsonrpc/types"
 )
 
 const (
