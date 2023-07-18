@@ -9,10 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Masterminds/semver/v3"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/version"
-	"github.com/go-git/go-git/v5"
+	e2e "github.com/ben2077/cometbft/test/e2e/pkg"
+	"github.com/ben2077/cometbft/version"
 	"github.com/go-git/go-git/v5/plumbing/object"
 )
 

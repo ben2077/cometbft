@@ -10,9 +10,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/cli"
-	rpchttp "github.com/cometbft/cometbft/rpc/client/http"
+	cfg "github.com/ben2077/cometbft/config"
+	"github.com/ben2077/cometbft/libs/cli"
+	rpchttp "github.com/ben2077/cometbft/rpc/client/http"
 )
 
 var dumpCmd = &cobra.Command{

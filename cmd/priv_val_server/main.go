@@ -5,12 +5,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtnet "github.com/cometbft/cometbft/libs/net"
-	cmtos "github.com/cometbft/cometbft/libs/os"
+	"github.com/ben2077/cometbft/crypto/ed25519"
+	"github.com/ben2077/cometbft/libs/log"
+	cmtnet "github.com/ben2077/cometbft/libs/net"
+	cmtos "github.com/ben2077/cometbft/libs/os"
 
-	"github.com/cometbft/cometbft/privval"
+	"github.com/ben2077/cometbft/privval"
 )
 
 func main() {

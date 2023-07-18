@@ -14,10 +14,10 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/secp256k1"
-	rpchttp "github.com/cometbft/cometbft/rpc/client/http"
+	"github.com/ben2077/cometbft/crypto"
+	"github.com/ben2077/cometbft/crypto/ed25519"
+	"github.com/ben2077/cometbft/crypto/secp256k1"
+	rpchttp "github.com/ben2077/cometbft/rpc/client/http"
 
 	_ "embed"
 )

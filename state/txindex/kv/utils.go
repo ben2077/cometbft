@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math/big"
 
-	idxutil "github.com/cometbft/cometbft/internal/indexer"
-	cmtsyntax "github.com/cometbft/cometbft/libs/pubsub/query/syntax"
-	"github.com/cometbft/cometbft/state/indexer"
-	"github.com/cometbft/cometbft/types"
+	idxutil "github.com/ben2077/cometbft/internal/indexer"
+	cmtsyntax "github.com/ben2077/cometbft/libs/pubsub/query/syntax"
+	"github.com/ben2077/cometbft/state/indexer"
+	"github.com/ben2077/cometbft/types"
 	"github.com/google/orderedcode"
 )
 

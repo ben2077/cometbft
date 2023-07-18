@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtcrypto "github.com/cometbft/cometbft/proto/tendermint/crypto"
+	"github.com/ben2077/cometbft/crypto/tmhash"
+	cmtcrypto "github.com/ben2077/cometbft/proto/tendermint/crypto"
 )
 
 const ProofOpValue = "simple:v"

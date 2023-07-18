@@ -1,7 +1,7 @@
 package blocksync
 
 import (
-	"github.com/cometbft/cometbft/types"
+	"github.com/ben2077/cometbft/types"
 	"github.com/go-kit/kit/metrics"
 )
 

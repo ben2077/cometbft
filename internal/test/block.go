@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	"github.com/cometbft/cometbft/types"
-	"github.com/cometbft/cometbft/version"
+	"github.com/ben2077/cometbft/crypto"
+	"github.com/ben2077/cometbft/crypto/tmhash"
+	"github.com/ben2077/cometbft/types"
+	"github.com/ben2077/cometbft/version"
 )
 
 const (

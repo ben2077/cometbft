@@ -7,10 +7,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/cometbft/cometbft/libs/log"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/test/e2e/pkg/exec"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra/docker"
+	"github.com/ben2077/cometbft/libs/log"
+	e2e "github.com/ben2077/cometbft/test/e2e/pkg"
+	"github.com/ben2077/cometbft/test/e2e/pkg/exec"
+	"github.com/ben2077/cometbft/test/e2e/pkg/infra/docker"
 )
 
 // Cleanup removes the Docker Compose containers and testnet directory.

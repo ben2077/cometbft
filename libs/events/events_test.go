@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/libs/rand"
+	"github.com/ben2077/cometbft/libs/rand"
 )
 
 // TestAddListenerForEventFireOnce sets up an EventSwitch, subscribes a single

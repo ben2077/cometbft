@@ -6,12 +6,12 @@ import (
 
 	"fmt"
 
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/clist"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/p2p"
-	protomem "github.com/cometbft/cometbft/proto/tendermint/mempool"
-	"github.com/cometbft/cometbft/types"
+	cfg "github.com/ben2077/cometbft/config"
+	"github.com/ben2077/cometbft/libs/clist"
+	"github.com/ben2077/cometbft/libs/log"
+	"github.com/ben2077/cometbft/p2p"
+	protomem "github.com/ben2077/cometbft/proto/tendermint/mempool"
+	"github.com/ben2077/cometbft/types"
 )
 
 // Reactor handles mempool tx broadcasting amongst peers.
@@ -172,7 +172,7 @@ func (memR *Reactor) broadcastTxRoutine(peer p2p.Peer) {
 		// reduces the mempool size and the recheck-tx rate of the receiving
 		// node. See [RFC 103] for an analysis on this optimization.
 		//
-		// [RFC 103]: https://github.com/cometbft/cometbft/pull/735
+		// [RFC 103]: https://github.com/ben2077/cometbft/pull/735
 		memTx := next.Value.(*mempoolTx)
 		if peerState.GetHeight() < memTx.Height()-1 {
 			time.Sleep(PeerCatchupSleepIntervalMS * time.Millisecond)

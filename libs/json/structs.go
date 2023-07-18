@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
+	cmtsync "github.com/ben2077/cometbft/libs/sync"
 )
 
 var (

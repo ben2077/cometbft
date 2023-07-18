@@ -4,11 +4,11 @@ import (
 	"os"
 	"path/filepath"
 
-	cmd "github.com/cometbft/cometbft/cmd/cometbft/commands"
-	"github.com/cometbft/cometbft/cmd/cometbft/commands/debug"
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/cli"
-	nm "github.com/cometbft/cometbft/node"
+	cmd "github.com/ben2077/cometbft/cmd/cometbft/commands"
+	"github.com/ben2077/cometbft/cmd/cometbft/commands/debug"
+	cfg "github.com/ben2077/cometbft/config"
+	"github.com/ben2077/cometbft/libs/cli"
+	nm "github.com/ben2077/cometbft/node"
 )
 
 func main() {
