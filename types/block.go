@@ -627,6 +627,7 @@ func HeaderFromProto(ph *cmtproto.Header) (Header, error) {
 	h.LastResultsHash = ph.LastResultsHash
 	h.LastCommitHash = ph.LastCommitHash
 	h.ProposerAddress = ph.ProposerAddress
+	h.EthDataHash = ph.EthDataHash
 
 	return *h, h.ValidateBasic()
 }
