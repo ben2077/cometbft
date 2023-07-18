@@ -5,6 +5,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"net"
 	"strings"
 	"time"
@@ -136,6 +137,14 @@ func createAndStartEventBus(logger log.Logger) (*types.EventBus, error) {
 		return nil, err
 	}
 	return eventBus, nil
+}
+
+func createEthClient(config *cfg.Config) (*ethclient.Client, error) {
+	ethClient, err := ethclient.Dial(config.RPC.EthRPCAddress)
+	if err != nil {
+		return nil, err
+	}
+	return ethClient, nil
 }
 
 func createAndStartIndexerService(

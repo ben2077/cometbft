@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"time"
 
 	abci "github.com/cometbft/cometbft/abci/types"
@@ -43,6 +44,8 @@ type BlockExecutor struct {
 	logger log.Logger
 
 	metrics *Metrics
+
+	ethClient ethclient.Client
 }
 
 type BlockExecutorOption func(executor *BlockExecutor)
@@ -73,6 +76,35 @@ func NewBlockExecutor(
 		logger:     logger,
 		metrics:    NopMetrics(),
 		blockStore: blockStore,
+	}
+
+	for _, option := range options {
+		option(res)
+	}
+
+	return res
+}
+
+func NewBlockExecutorWithEthClient(
+	stateStore Store,
+	logger log.Logger,
+	proxyApp proxy.AppConnConsensus,
+	mempool mempool.Mempool,
+	evpool EvidencePool,
+	blockStore BlockStore,
+	client ethclient.Client,
+	options ...BlockExecutorOption,
+) *BlockExecutor {
+	res := &BlockExecutor{
+		store:      stateStore,
+		proxyApp:   proxyApp,
+		eventBus:   types.NopEventBus{},
+		mempool:    mempool,
+		evpool:     evpool,
+		logger:     logger,
+		metrics:    NopMetrics(),
+		blockStore: blockStore,
+		ethClient:  client,
 	}
 
 	for _, option := range options {
@@ -125,7 +157,18 @@ func (blockExec *BlockExecutor) CreateProposalBlock(
 
 	txs := blockExec.mempool.ReapMaxBytesMaxGas(maxReapBytes, maxGas)
 	commit := lastExtCommit.ToCommit()
-	block := state.MakeBlock(height, txs, commit, evidence, proposerAddr)
+
+	ethBlockNumber, err := blockExec.ethClient.BlockNumber(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	ethData := types.EthData{
+		BlockNumber: ethBlockNumber,
+	}
+
+	block := state.MakeNewBlock(height, txs, commit, evidence, proposerAddr, ethData)
+
 	rpp, err := blockExec.proxyApp.PrepareProposal(
 		ctx,
 		&abci.RequestPrepareProposal{
@@ -191,6 +234,10 @@ func (blockExec *BlockExecutor) ValidateBlock(state State, block *types.Block) e
 	err := validateBlock(state, block)
 	if err != nil {
 		return err
+	}
+	currentEthBlockNumber, err := blockExec.ethClient.BlockNumber(context.Background())
+	if currentEthBlockNumber < block.EthData.BlockNumber {
+		return ErrInvalidBlock(fmt.Errorf("recieved block number %d is ahead of current block number %d", block.EthData.BlockNumber, currentEthBlockNumber))
 	}
 	return blockExec.evpool.CheckEvidence(block.Evidence.Evidence)
 }

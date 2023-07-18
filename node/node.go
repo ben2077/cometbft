@@ -255,13 +255,20 @@ func NewNodeWithContext(ctx context.Context,
 	}
 
 	// make block executor for consensus and blocksync reactors to execute blocks
-	blockExec := sm.NewBlockExecutor(
+
+	ethClient, err := createEthClient(config)
+	if err != nil {
+		return nil, err
+	}
+
+	blockExec := sm.NewBlockExecutorWithEthClient(
 		stateStore,
 		logger.With("module", "state"),
 		proxyApp.Consensus(),
 		mempool,
 		evidencePool,
 		blockStore,
+		*ethClient,
 		sm.BlockExecutorWithMetrics(smMetrics),
 	)
 
