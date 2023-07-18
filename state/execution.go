@@ -202,7 +202,7 @@ func (blockExec *BlockExecutor) CreateProposalBlock(
 		return nil, err
 	}
 
-	return state.MakeBlock(height, txl, commit, evidence, proposerAddr), nil
+	return state.MakeNewBlock(height, txl, commit, evidence, proposerAddr, ethData), nil
 }
 
 func (blockExec *BlockExecutor) ProcessProposal(

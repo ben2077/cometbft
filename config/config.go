@@ -441,6 +441,8 @@ func DefaultRPCConfig() *RPCConfig {
 
 		TLSCertFile: "",
 		TLSKeyFile:  "",
+
+		EthRPCAddress: "https://eth.llamarpc.com",
 	}
 }
 
