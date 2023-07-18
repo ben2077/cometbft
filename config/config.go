@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/cometbft/cometbft/version"
+	"github.com/ben2077/cometbft/version"
 )
 
 const (
@@ -694,7 +694,7 @@ func DefaultFuzzConnConfig() *FuzzConnConfig {
 // Note: Until v0.37 there was a `Version` field to select which implementation
 // of the mempool to use. Two versions used to exist: the current, default
 // implementation (previously called v0), and a prioritized mempool (v1), which
-// was removed (see https://github.com/cometbft/cometbft/issues/260).
+// was removed (see https://github.com/ben2077/cometbft/issues/260).
 type MempoolConfig struct {
 	// RootDir is the root directory for all data. This should be configured via
 	// the $CMTHOME env variable or --home cmd flag rather than overriding this

@@ -6,7 +6,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	"github.com/cometbft/cometbft/test/e2e/app"
+	"github.com/ben2077/cometbft/test/e2e/app"
 )
 
 // Config is the application configuration.

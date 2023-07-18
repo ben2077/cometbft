@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"text/template"
 
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/test/e2e/pkg/exec"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra"
+	e2e "github.com/ben2077/cometbft/test/e2e/pkg"
+	"github.com/ben2077/cometbft/test/e2e/pkg/exec"
+	"github.com/ben2077/cometbft/test/e2e/pkg/infra"
 )
 
 var _ infra.Provider = (*Provider)(nil)

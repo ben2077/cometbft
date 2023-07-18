@@ -3,7 +3,7 @@ package provider
 import (
 	"context"
 
-	"github.com/cometbft/cometbft/types"
+	"github.com/ben2077/cometbft/types"
 )
 
 // Provider provides information for the light client to sync (verification

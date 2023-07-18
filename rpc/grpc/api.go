@@ -3,9 +3,9 @@ package coregrpc
 import (
 	"context"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	core "github.com/cometbft/cometbft/rpc/core"
-	rpctypes "github.com/cometbft/cometbft/rpc/jsonrpc/types"
+	abci "github.com/ben2077/cometbft/abci/types"
+	core "github.com/ben2077/cometbft/rpc/core"
+	rpctypes "github.com/ben2077/cometbft/rpc/jsonrpc/types"
 )
 
 type broadcastAPI struct {

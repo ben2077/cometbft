@@ -11,16 +11,16 @@ import (
 	"github.com/cosmos/gogoproto/proto"
 	gogotypes "github.com/cosmos/gogoproto/types"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/merkle"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	"github.com/cometbft/cometbft/libs/bits"
-	cmtbytes "github.com/cometbft/cometbft/libs/bytes"
-	cmtmath "github.com/cometbft/cometbft/libs/math"
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtversion "github.com/cometbft/cometbft/proto/tendermint/version"
-	"github.com/cometbft/cometbft/version"
+	"github.com/ben2077/cometbft/crypto"
+	"github.com/ben2077/cometbft/crypto/merkle"
+	"github.com/ben2077/cometbft/crypto/tmhash"
+	"github.com/ben2077/cometbft/libs/bits"
+	cmtbytes "github.com/ben2077/cometbft/libs/bytes"
+	cmtmath "github.com/ben2077/cometbft/libs/math"
+	cmtsync "github.com/ben2077/cometbft/libs/sync"
+	cmtproto "github.com/ben2077/cometbft/proto/tendermint/types"
+	cmtversion "github.com/ben2077/cometbft/proto/tendermint/version"
+	"github.com/ben2077/cometbft/version"
 )
 
 const (
@@ -359,7 +359,7 @@ func MaxDataBytesNoEvidence(maxBytes int64, valsCount int) int64 {
 // NOTE: changes to the Header should be duplicated in:
 // - header.Hash()
 // - abci.Header
-// - https://github.com/cometbft/cometbft/blob/v0.38.x/spec/blockchain/blockchain.md
+// - https://github.com/ben2077/cometbft/blob/v0.38.x/spec/blockchain/blockchain.md
 type Header struct {
 	// basic block info
 	Version cmtversion.Consensus `json:"version"`

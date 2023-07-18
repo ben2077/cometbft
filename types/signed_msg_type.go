@@ -1,6 +1,6 @@
 package types
 
-import cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+import cmtproto "github.com/ben2077/cometbft/proto/tendermint/types"
 
 // IsVoteTypeValid returns true if t is a valid vote type.
 func IsVoteTypeValid(t cmtproto.SignedMsgType) bool {

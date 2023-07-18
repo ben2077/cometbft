@@ -1,8 +1,8 @@
 package crypto
 
 import (
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	"github.com/cometbft/cometbft/libs/bytes"
+	"github.com/ben2077/cometbft/crypto/tmhash"
+	"github.com/ben2077/cometbft/libs/bytes"
 )
 
 const (
@@ -42,7 +42,7 @@ type Symmetric interface {
 }
 
 // If a new key type implements batch verification,
-// the key type must be registered in github.com/cometbft/cometbft/crypto/batch
+// the key type must be registered in github.com/ben2077/cometbft/crypto/batch
 type BatchVerifier interface {
 	// Add appends an entry into the BatchVerifier.
 	Add(key PubKey, message, signature []byte) error

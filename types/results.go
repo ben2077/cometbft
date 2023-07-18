@@ -1,8 +1,8 @@
 package types
 
 import (
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/crypto/merkle"
+	abci "github.com/ben2077/cometbft/abci/types"
+	"github.com/ben2077/cometbft/crypto/merkle"
 )
 
 // ABCIResults wraps the deliver tx results to return a proof.

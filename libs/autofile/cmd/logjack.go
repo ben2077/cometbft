@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	auto "github.com/cometbft/cometbft/libs/autofile"
-	cmtos "github.com/cometbft/cometbft/libs/os"
+	auto "github.com/ben2077/cometbft/libs/autofile"
+	cmtos "github.com/ben2077/cometbft/libs/os"
 )
 
 const (

@@ -1,4 +1,4 @@
-module github.com/cometbft/cometbft
+module github.com/ben2077/cometbft
 
 go 1.20
 

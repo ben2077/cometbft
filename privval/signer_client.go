@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	cryptoenc "github.com/cometbft/cometbft/crypto/encoding"
-	privvalproto "github.com/cometbft/cometbft/proto/tendermint/privval"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/types"
+	"github.com/ben2077/cometbft/crypto"
+	cryptoenc "github.com/ben2077/cometbft/crypto/encoding"
+	privvalproto "github.com/ben2077/cometbft/proto/tendermint/privval"
+	cmtproto "github.com/ben2077/cometbft/proto/tendermint/types"
+	"github.com/ben2077/cometbft/types"
 )
 
 // SignerClient implements PrivValidator.
