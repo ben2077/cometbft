@@ -236,8 +236,11 @@ func (blockExec *BlockExecutor) ValidateBlock(state State, block *types.Block) e
 		return err
 	}
 	currentEthBlockNumber, err := blockExec.ethClient.BlockNumber(context.Background())
+	if err != nil {
+		return err
+	}
 	if currentEthBlockNumber < block.EthData.BlockNumber {
-		return ErrInvalidBlock(fmt.Errorf("recieved block number %d is ahead of current block number %d", block.EthData.BlockNumber, currentEthBlockNumber))
+		return ErrInvalidBlock(fmt.Errorf("received block number %d is ahead of current block number %d", block.EthData.BlockNumber, currentEthBlockNumber))
 	}
 	return blockExec.evpool.CheckEvidence(block.Evidence.Evidence)
 }
