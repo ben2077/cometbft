@@ -74,9 +74,8 @@ func (e *EthData) ToProto() *cmtproto.EthData {
 func (e *EthData) FromProto(ep *cmtproto.EthData) error {
 	if ep.BlockNumber == 0 {
 		return errors.New("eth block number is empty")
-	} else {
-		e.BlockNumber = ep.BlockNumber
 	}
+	e.BlockNumber = ep.BlockNumber
 	return nil
 }
 
@@ -147,7 +146,6 @@ func (b *Block) fillHeader() {
 	if b.EvidenceHash == nil {
 		b.EvidenceHash = b.Evidence.Hash()
 	}
-
 	if b.EthDataHash == nil {
 		b.EthDataHash = b.EthData.Hash()
 	}
