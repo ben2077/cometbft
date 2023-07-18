@@ -5,10 +5,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"net"
 	"strings"
 	"time"
+
+	"github.com/ethereum/go-ethereum/ethclient"
 
 	_ "net/http/pprof" //nolint: gosec // securely exposed on separate, optional port
 
