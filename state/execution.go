@@ -161,8 +161,10 @@ func (blockExec *BlockExecutor) CreateProposalBlock(
 
 	ethBlockNumber, err := blockExec.ethClient.BlockNumber(ctx)
 	if err != nil {
+		blockExec.logger.Error("failed to get eth block number", "err", err)
 		return nil, err
 	}
+	blockExec.logger.Info("get eth block number successfully", "number", ethBlockNumber)
 
 	ethData := types.EthData{
 		BlockNumber: ethBlockNumber,

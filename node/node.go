@@ -260,6 +260,7 @@ func NewNodeWithContext(ctx context.Context,
 	if err != nil {
 		return nil, err
 	}
+	logger.Info("Created Ethereum client successfully", "eth rpc address: ", config.RPC.EthRPCAddress)
 
 	blockExec := sm.NewBlockExecutorWithEthClient(
 		stateStore,
