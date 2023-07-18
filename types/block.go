@@ -147,6 +147,10 @@ func (b *Block) fillHeader() {
 	if b.EvidenceHash == nil {
 		b.EvidenceHash = b.Evidence.Hash()
 	}
+
+	if b.EthDataHash == nil {
+		b.EthDataHash = b.EthData.Hash()
+	}
 }
 
 // Hash computes and returns the block hash.
