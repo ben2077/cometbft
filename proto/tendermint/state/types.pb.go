@@ -5,9 +5,9 @@ package state
 
 import (
 	fmt "fmt"
+	types "github.com/ben2077/cometbft/abci/types"
 	types1 "github.com/ben2077/cometbft/proto/tendermint/types"
 	version "github.com/ben2077/cometbft/proto/tendermint/version"
-	types "github.com/ben2077/cometbft/abci/types"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
 	_ "github.com/cosmos/gogoproto/types"
