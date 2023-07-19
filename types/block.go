@@ -2,6 +2,7 @@ package types
 
 import (
 	"bytes"
+	"encoding/binary"
 	"errors"
 	"fmt"
 	"strings"
@@ -47,6 +48,35 @@ type Block struct {
 	Data       `json:"data"`
 	Evidence   EvidenceData `json:"evidence"`
 	LastCommit *Commit      `json:"last_commit"`
+	EthData    EthData      `json:"eth_data"`
+}
+
+type EthData struct {
+	BlockNumber uint64 `json:"block_number"`
+}
+
+func (e *EthData) Hash() cmtbytes.HexBytes {
+	blockNumberBytes := make([]byte, 8) // uint64
+	binary.BigEndian.PutUint64(blockNumberBytes, e.BlockNumber)
+
+	es := make([][]byte, 1)
+	es[0] = blockNumberBytes
+
+	return merkle.HashFromByteSlices(es)
+}
+
+func (e *EthData) ToProto() *cmtproto.EthData {
+	return &cmtproto.EthData{
+		BlockNumber: e.BlockNumber,
+	}
+}
+
+func (e *EthData) FromProto(ep *cmtproto.EthData) error {
+	if ep.BlockNumber == 0 {
+		return errors.New("eth block number is empty")
+	}
+	e.BlockNumber = ep.BlockNumber
+	return nil
 }
 
 // ValidateBasic performs basic validation that doesn't involve state data.
@@ -115,6 +145,9 @@ func (b *Block) fillHeader() {
 	}
 	if b.EvidenceHash == nil {
 		b.EvidenceHash = b.Evidence.Hash()
+	}
+	if b.EthDataHash == nil {
+		b.EthDataHash = b.EthData.Hash()
 	}
 }
 
@@ -234,6 +267,8 @@ func (b *Block) ToProto() (*cmtproto.Block, error) {
 	}
 	pb.Evidence = *protoEvidence
 
+	pb.EthData = *b.EthData.ToProto()
+
 	return pb, nil
 }
 
@@ -265,6 +300,10 @@ func BlockFromProto(bp *cmtproto.Block) (*Block, error) {
 			return nil, err
 		}
 		b.LastCommit = lc
+	}
+
+	if err = b.EthData.FromProto(&bp.EthData); err != nil {
+		return nil, err
 	}
 
 	return b, b.ValidateBasic()
@@ -347,6 +386,27 @@ type Header struct {
 	// consensus info
 	EvidenceHash    cmtbytes.HexBytes `json:"evidence_hash"`    // evidence included in the block
 	ProposerAddress Address           `json:"proposer_address"` // original proposer of the block
+
+	EthDataHash cmtbytes.HexBytes `json:"eth_data_hash"`
+}
+
+func (h *Header) PopulateNew(version cmtversion.Consensus, chainID string,
+	timestamp time.Time, lastBlockID BlockID,
+	valHash, nextValHash []byte,
+	consensusHash, appHash, lastResultsHash []byte,
+	proposerAddress Address,
+	ethDataHash []byte) {
+	h.Version = version
+	h.ChainID = chainID
+	h.Time = timestamp
+	h.LastBlockID = lastBlockID
+	h.ValidatorsHash = valHash
+	h.NextValidatorsHash = nextValHash
+	h.ConsensusHash = consensusHash
+	h.AppHash = appHash
+	h.LastResultsHash = lastResultsHash
+	h.ProposerAddress = proposerAddress
+	h.EthDataHash = ethDataHash
 }
 
 // Populate the Header with state-derived data.
@@ -470,6 +530,7 @@ func (h *Header) Hash() cmtbytes.HexBytes {
 		cdcEncode(h.LastResultsHash),
 		cdcEncode(h.EvidenceHash),
 		cdcEncode(h.ProposerAddress),
+		cdcEncode(h.EthDataHash),
 	})
 }
 
@@ -533,6 +594,7 @@ func (h *Header) ToProto() *cmtproto.Header {
 		LastResultsHash:    h.LastResultsHash,
 		LastCommitHash:     h.LastCommitHash,
 		ProposerAddress:    h.ProposerAddress,
+		EthDataHash:        h.EthDataHash,
 	}
 }
 
@@ -565,6 +627,7 @@ func HeaderFromProto(ph *cmtproto.Header) (Header, error) {
 	h.LastResultsHash = ph.LastResultsHash
 	h.LastCommitHash = ph.LastCommitHash
 	h.ProposerAddress = ph.ProposerAddress
+	h.EthDataHash = ph.EthDataHash
 
 	return *h, h.ValidateBasic()
 }

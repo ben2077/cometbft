@@ -260,6 +260,9 @@ tls_key_file = "{{ .RPC.TLSKeyFile }}"
 # pprof listen address (https://golang.org/pkg/net/http/pprof)
 pprof_laddr = "{{ .RPC.PprofListenAddress }}"
 
+# eth rpc address to listen on
+eth_rpc_address = "{{ .RPC.EthRPCAddress }}"
+
 #######################################################
 ###           P2P Configuration Options             ###
 #######################################################

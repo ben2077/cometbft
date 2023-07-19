@@ -413,6 +413,8 @@ type RPCConfig struct {
 	// pprof listen address (https://golang.org/pkg/net/http/pprof)
 	// FIXME: This should be moved under the instrumentation section
 	PprofListenAddress string `mapstructure:"pprof_laddr"`
+
+	EthRPCAddress string `mapstructure:"eth_rpc_address"`
 }
 
 // DefaultRPCConfig returns a default configuration for the RPC server
@@ -439,6 +441,8 @@ func DefaultRPCConfig() *RPCConfig {
 
 		TLSCertFile: "",
 		TLSKeyFile:  "",
+
+		EthRPCAddress: "https://eth.llamarpc.com",
 	}
 }
 
